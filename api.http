@@ -1,0 +1,31 @@
+###
+GET http://localhost:3000/products
+
+###
+# @name createProduct
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+  "name": "Product 123",
+  "slug": "product-123",
+  "description": "Description of product 123",
+  "price": 9.99
+}
+
+###
+@productId = {{ createProduct.response.body.id }}
+
+###
+GET http://localhost:3000/products/{{productId}}
+
+###
+PATCH http://localhost:3000/products/{{productId}}
+Content-Type: application/json
+
+{
+  "name": "Product 1123123",
+  "slug": "product-121233",
+  "description": "Description of product 121233",
+  "price": 11
+}
